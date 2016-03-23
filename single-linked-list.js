@@ -22,40 +22,40 @@ SinglyLinkedList.prototype.add = function(data) {
 };
 
 SinglyLinkedList.prototype.remove = function(data) {
-  var previous = this.head;
-  var current = this.head;
-  while(current) {
-    if(current.data === data) {    
-      if(current === this.head) {
+  var before = this.head;
+  var now = this.head;
+  while(now) {
+    if(now.data === data) {    
+      if(now === this.head) {
         this.head = this.head.next;
       }
-      if(current === this.tail) { 
-        this.tail = previous;
+      if(now === this.tail) { 
+        this.tail = before;
       }
-      previous.next = current.next;
+      before.next = now.next;
       this.numberOfValues--;
     } else {
-      previous = current;
+      before = now;
     }
-      current = current.next;
+      now = now.next;
   }
 };
 
 SinglyLinkedList.prototype.insertAfter = function(data, toNodeData) {
-  var current = this.head;
-  while(current) {
-    if(current.data === toNodeData) {
+  var now = this.head;
+  while(now) {
+    if(now.data === toNodeData) {
       var node = new Node(data);
-      if(current === this.tail) {  
+      if(now === this.tail) {  
         this.tail.next = node;
         this.tail = node;
       } else {    
-        node.next = current.next;
-        current.next = node;
+        node.next = now.next;
+        now.next = node;
       }
       this.numberOfValues++;
     }
-    current = current.next;
+    now = now.next;
   }
 };
 
@@ -65,10 +65,10 @@ SinglyLinkedList.prototype.length = function() {
 
 SinglyLinkedList.prototype.print = function() {
   var string = " ";
-  var current = this.head;
-  while(current) {
-    string += current.data + " ";
-    current = current.next;
+  var now = this.head;
+  while(now) {
+    string += now.data + " ";
+    now = now.next;
   }
   return string.trim();
 };
